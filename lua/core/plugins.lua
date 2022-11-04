@@ -22,9 +22,11 @@ function M:init(plugins)
 
     require("packer").startup({
         function(use)
-            -- Use all plugins provided
-            for _, plugin in ipairs(plugins) do
-                use(plugin)
+            use {"wbthomason/packer.nvim"}
+
+            -- Use all predefined plugins and their configurations
+            for name, config in pairs(plugins) do
+                use(name, config)
             end
 
             if PACKER_BOOTSTRAP then
