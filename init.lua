@@ -14,7 +14,7 @@ vim.o.tabstop     = 4                           -- Insert 2 spaces for a tab
 vim.o.shiftwidth  = 4                           -- The number of spaces inserted for each indentation
 vim.o.softtabstop = 4
 
-require("plugins"):init()
+require("bootstrap"):init()
 
 -- -- Install packer.nvim if it's not installed.
 -- local packer_bootstrap

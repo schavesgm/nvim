@@ -3,7 +3,8 @@ local M = {}
 local utils = require("utils")
 
 -- Initialise the plugin module
-function M:init()
+function M:init(plugins)
+
     -- Install packer.nvim if it's not installed.
     local PACKER_BOOTSTRAP
     if not utils.is_plugin_installed("packer.nvim") then
@@ -21,18 +22,9 @@ function M:init()
 
     require("packer").startup({
         function()
-            use({ "wbthomason/packer.nvim" })
-
-            -- These two plugins make CodeArt startup faster.
-            -- In addition FixCursorHold can fix this bug:
-            -- https://github.com/neovim/neovim/issues/12587
-            use({
-                "lewis6991/impatient.nvim",
-            })
-            use({
-                "antoinemadec/FixCursorHold.nvim",
-                event = { "BufRead", "BufNewFile" },
-            })
+            for _, plugin in ipairs(plugins) do
+                use(plugin)
+            end
 
             if PACKER_BOOTSTRAP then
                 require("packer").sync()
