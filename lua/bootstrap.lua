@@ -36,8 +36,11 @@ end
 ---Initialise the configuration.
 function M:init()
 
-    -- Initialise the default configuration
+    -- Initialise the options module
     require("core.options"):init(require("defaults.options"))
+
+    -- Initialise the keymaps module
+    require("core.keymaps"):init(require("defaults.keymaps"))
 
     -- Initialise the plugins
     require("core.plugins"):init(require("defaults.plugins"))
