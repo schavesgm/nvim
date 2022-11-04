@@ -21,7 +21,8 @@ function M:init(plugins)
     end
 
     require("packer").startup({
-        function()
+        function(use)
+            -- Use all plugins provided
             for _, plugin in ipairs(plugins) do
                 use(plugin)
             end
