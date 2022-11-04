@@ -42,6 +42,9 @@ function M:init()
     -- Initialise the keymaps module
     require("core.keymaps"):init(require("defaults.keymaps"))
 
+    -- Initialise the autocommands module
+    require("core.autocmds"):init(require("defaults.autocmds"))
+
     -- Initialise the plugins
     require("core.plugins"):init(require("defaults.plugins"))
 
