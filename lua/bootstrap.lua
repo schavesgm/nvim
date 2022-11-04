@@ -11,12 +11,43 @@ end
 -- Load the default configuration
 local plugins = require("defaults.plugins")
 
+-- Builtin plugins to deactivate
+local disabled_built_ins = {
+    "2html_plugin",
+    "gzip",
+    "matchit",
+    "rrhelper",
+    "zip",
+    "zipPlugin",
+    "tar",
+    "tarPlugin",
+    "getscript",
+    "getscriptPlugin",
+    "vimball",
+    "vimballPlugin",
+    "logipat",
+    "spellfile_plugin",
+    -- "netrw",
+    -- "netrwPlugin",
+    -- "netrwSettings",
+    -- "netrwFileHandlers",
+}
+for _, plugin in ipairs(disabled_built_ins) do
+    vim.g["loaded_" .. plugin] = true
+end
+
+
+---Initialise the configuration.
 function M:init()
 
     -- Initialise the plugins
     require("core.plugins"):init(plugins)
 
+end
 
+---Reload the neovim configuration
+function M:reload()
+    M:init()
 end
 
 return M
