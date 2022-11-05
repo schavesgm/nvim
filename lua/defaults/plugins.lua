@@ -1,6 +1,4 @@
 -- File containing all the default plugins of the system
--- TODO: Plugins don't load their configuration
-
 return {
     -- Initialisation plugins
     ["lewis6991/impatient.nvim"] = {},
@@ -36,6 +34,36 @@ return {
     },
     ["williamboman/mason-lspconfig.nvim"] = {
         config = function() require("plugins.mason-lspconfig") end,
+    },
+
+    -- Autocompletion and snippets
+    ["rafamadriz/friendly-snippets"] = {
+        module = {"cmp", "cmp_nvim_lsp"},
+        event = "InsertEnter",
+    },
+    ["hrsh7th/nvim-cmp"] = {
+        after = "friendly-snippets",
+        config = function() require("plugins.nvim-cmp") end,
+    },
+    ["L3MON4D3/LuaSnip"] = {
+        wants = "friendly-snippets",
+        after = "nvim-cmp",
+        config = function() require("plugins.luasnip") end,
+    },
+    ["saadparwaiz1/cmp_luasnip"] = {
+        after = "LuaSnip"
+    },
+    ["hrsh7th/cmp-nvim-lua"] = {
+        after = "cmp_luasnip"
+    },
+    ["hrsh7th/cmp-nvim-lsp"] = {
+        after = "cmp-nvim-lua"
+    },
+    ["hrsh7th/cmp-buffer"] = {
+        after = "cmp-nvim-lsp"
+    },
+    ["hrsh7th/cmp-path"] = {
+        after = "cmp-buffer"
     },
 
     -- Statusline

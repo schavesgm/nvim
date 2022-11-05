@@ -2,20 +2,12 @@ local present_1, lspconfig = pcall(require, "lspconfig")
 if not present_1 then return end
 local present_2, mason_lspconfig = pcall(require, "mason-lspconfig")
 if not present_2 then return end
-local present_3, cmp = pcall(require, "cmp_nvim_lsp")
 
--- Define the capabilities using cmp
-local capabilities = nil
-if present_3 then
-    capabilites = cmp_lsp.default_capabilities()
-end
-
--- Function to be called when attaching
+---Function to be called when attaching
 local function on_attach(client, bufnr)
     -- On attach function to attach some highlighting and keymaps
     if client.name == "tsserver" then
-        client.server_capabilities.document_formatting = false
-    end
+        client.server_capabilities.document_formatting = false end
 
     -- Set some required functionalities on attach
     require("lsp.utils").lsp_highlight_document(client)
@@ -37,10 +29,7 @@ local server_configs = require("lsp.servers")
 for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
 
     -- Basic server configuration
-    local config = {
-        on_attach    = on_attach,
-        capabilities = capabilities,
-    }
+    local config = {on_attach    = on_attach,}
 
     -- If a configuration is present, then add it
     if server_configs[server] ~= nil then
