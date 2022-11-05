@@ -1,5 +1,5 @@
-local configs = require"lspconfig/configs"
-local util    = require"lspconfig/util"
+local configs = require("lspconfig/configs")
+local util    = require("lspconfig/util")
 local path    = util.path
 
 ---Function to get the python executable path from the current directory
