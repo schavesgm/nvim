@@ -1,7 +1,13 @@
 -- File containing all the default plugins of the system
+
 return {
     -- Initialisation plugins
     ["lewis6991/impatient.nvim"] = {},
+
+    -- Colourschemes
+    ["rebelot/kanagawa.nvim"] = {
+        config = function() require("plugins.kanagawa") end,
+    },
 
     -- Treesitter plugins
     ["nvim-treesitter/nvim-treesitter"] = {
@@ -12,9 +18,9 @@ return {
         config = function() require("plugins.nvim-treesitter") end,
     },
     ['nvim-treesitter/playground'] = {
-        requires='nvim-treesitter/nvim-treesitter',
-        ensure_dependencies=true,
-        cmd='TSPlaygroundToggle',
-        config=function() require"nvim-treesitter.configs".setup{} end,
+        requires = 'nvim-treesitter/nvim-treesitter',
+        ensure_dependencies = true,
+        cmd = 'TSPlaygroundToggle',
+        config = function() require"nvim-treesitter.configs".setup{} end,
     },
 }
