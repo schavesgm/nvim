@@ -2,7 +2,7 @@ local present, plugin = pcall(require, "mason")
 if not present then return end
 
 plugin.setup({
-    PATH = "skip",
+    PATH = "prepend",
     ui = {
         icons = {
             package_pending = " ",
