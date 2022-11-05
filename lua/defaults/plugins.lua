@@ -22,12 +22,19 @@ return {
         requires = 'nvim-treesitter/nvim-treesitter',
         ensure_dependencies = true,
         cmd = 'TSPlaygroundToggle',
-        config = function() require"nvim-treesitter.configs".setup{} end,
+        config = function() require("nvim-treesitter.configs").setup{} end,
     },
 
     -- Lsp plugins
     ["williamboman/mason.nvim"] = {
-        cmd = require("core.lazy_load").mason_cmds,
         config = function() require("plugins.mason") end,
+    },
+    ["neovim/nvim-lspconfig"] = {
+        opt = true,
+        setup = function() require("core.lazy_load").on_file_open("nvim-lspconfig") end,
+        config = function() require("lsp") end,
+    },
+    ["williamboman/mason-lspconfig.nvim"] = {
+        config = function() require("plugins.mason-lspconfig") end,
     },
 }
