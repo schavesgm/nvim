@@ -1,4 +1,5 @@
 -- File containing all the default plugins of the system
+-- TODO: Plugins don't load their configuration
 
 return {
     -- Initialisation plugins
@@ -22,5 +23,11 @@ return {
         ensure_dependencies = true,
         cmd = 'TSPlaygroundToggle',
         config = function() require"nvim-treesitter.configs".setup{} end,
+    },
+
+    -- Lsp plugins
+    ["williamboman/mason.nvim"] = {
+        cmd = require("core.lazy_load").mason_cmds,
+        config = function() require("plugins.mason") end,
     },
 }
