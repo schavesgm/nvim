@@ -37,4 +37,15 @@ return {
     ["williamboman/mason-lspconfig.nvim"] = {
         config = function() require("plugins.mason-lspconfig") end,
     },
+
+    -- Statusline
+    ['feline-nvim/feline.nvim'] = {
+        config = function() require("plugins.feline") end,
+        requires={
+            {'kyazdani42/nvim-web-devicons', opts=true},
+            {'lewis6991/gitsigns.nvim', opts=true},
+        },
+        ensure_dependencies=true,
+    },
+
 }
