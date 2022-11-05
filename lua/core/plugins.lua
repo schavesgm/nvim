@@ -25,8 +25,8 @@ function M:init(plugins)
             use {"wbthomason/packer.nvim"}
 
             -- Use all predefined plugins and their configurations
-            for name, config in pairs(plugins) do
-                use(name, config)
+            for name, opts in pairs(plugins) do
+                use(vim.tbl_deep_extend("force", {name}, opts))
             end
 
             if PACKER_BOOTSTRAP then
