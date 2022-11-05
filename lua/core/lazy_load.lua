@@ -56,10 +56,6 @@ end
 --   "PackerLoad",
 -- }
 
--- List of commands to execute treesitter loading
-M.treesitter_cmds = {"TSInstall", "TSBufEnable", "TSBufDisable", "TSEnable", "TSDisable", "TSModuleInfo"}
-
--- M.mason_cmds = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" }
 -- 
 -- M.gitsigns = function()
 --   autocmd({ "BufRead" }, {
@@ -75,5 +71,9 @@ M.treesitter_cmds = {"TSInstall", "TSBufEnable", "TSBufDisable", "TSEnable", "TS
 --     end,
 --   })
 -- end
+--
+-- List of commands loading several plugins
+M.treesitter_cmds = {"TSInstall", "TSBufEnable", "TSBufDisable", "TSEnable", "TSDisable", "TSModuleInfo"}
+M.mason_cmds = {"Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog"}
 
 return M
