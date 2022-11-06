@@ -79,4 +79,9 @@ return {
         ensure_dependencies=true,
     },
 
+    -- Utility plugins
+    ["windwp/nvim-autopairs"] = {
+        after = "nvim-cmp",
+        config = function() require("plugins.nvim-autopairs") end,
+    },
 }
