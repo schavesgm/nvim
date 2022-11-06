@@ -17,4 +17,14 @@ treesitter.setup {
     indent = {
         enable = true,
     },
+
+    -- External modules
+    rainbow = {
+        enable = true,
+        extended_mode = true,
+        max_file_lines = nil,
+    },
+    autopairs = {
+        enable = true
+    },
 }
