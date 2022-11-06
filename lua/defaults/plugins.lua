@@ -89,4 +89,10 @@ return {
         setup = function() require("core.lazy_load").on_file_open("indent-blankline.nvim") end,
         config = function() require("plugins.indent-blankline") end,
     },
+
+    -- Miscellanea
+    ["kyazdani42/nvim-web-devicons"] = {
+        module = "nvim-web-devicons",
+        config = function() require("plugins.devicons") end,
+    },
 }
