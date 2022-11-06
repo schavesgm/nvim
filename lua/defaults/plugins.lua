@@ -69,6 +69,14 @@ return {
         after = "cmp-path"
     },
 
+    -- Git plugins
+      -- git stuff
+    ["lewis6991/gitsigns.nvim"] = {
+        ft = "gitcommit",
+        setup = function() require("core.lazy_load").gitsigns() end,
+        config = function() require("plugins.gitsigns") end,
+    },
+
     -- Statusline
     ['feline-nvim/feline.nvim'] = {
         config = function() require("plugins.feline") end,
