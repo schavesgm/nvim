@@ -84,4 +84,9 @@ return {
         after = "nvim-cmp",
         config = function() require("plugins.nvim-autopairs") end,
     },
+    ["lukas-reineke/indent-blankline.nvim"] = {
+        opt = true,
+        setup = function() require("core.lazy_load").on_file_open("indent-blankline.nvim") end,
+        config = function() require("plugins.indent-blankline") end,
+    },
 }
