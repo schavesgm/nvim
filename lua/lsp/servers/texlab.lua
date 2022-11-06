@@ -8,16 +8,12 @@ local function get_root(fname)
 end
 
 -- Create two autocommands for texlab
-local autocmds = require("user.core.autocmds")
+local autocmds = require("core.autocmds")
 local group = vim.api.nvim_create_augroup("TexLab", {clear=false})
 autocmds.set_augroup_autocmds({
     TexLab = {
-        autocmds.create_autocmd("FileType",
-            {pattern="tex", command=[[nnoremap <silent> <leader>r :TexlabBuild<Cr>]], group=group}
-        ),
-        autocmds.create_autocmd("FileType",
-            {pattern="tex", command=[[nnoremap <silent> <leader>t :TexlabForward<Cr>]], group=group}
-        ),
+        {event="FileType", opts={pattern="tex", command=[[nnoremap <silent> <leader>r :TexlabBuild<Cr>]], group=group}},
+        {event="FileType", opts={pattern="tex", command=[[nnoremap <silent> <leader>t :TexlabForward<Cr>]], group=group}},
     }
 })
 
