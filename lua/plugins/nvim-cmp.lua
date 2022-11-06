@@ -136,5 +136,6 @@ plugin.setup({
         {name = "buffer"},
         {name = "nvim_lua"},
         {name = "path"},
+        {name = "latex_symbols"},
     },
 })

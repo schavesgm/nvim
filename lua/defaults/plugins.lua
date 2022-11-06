@@ -65,6 +65,9 @@ return {
     ["hrsh7th/cmp-path"] = {
         after = "cmp-buffer"
     },
+    ["kdheepak/cmp-latex-symbols"] = {
+        after = "cmp-path"
+    },
 
     -- Statusline
     ['feline-nvim/feline.nvim'] = {
