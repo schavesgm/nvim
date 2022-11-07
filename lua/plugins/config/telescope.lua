@@ -147,8 +147,3 @@ telescope.setup {
         },
     },
 }
-
--- Add some telescope keybindings
-vim.keymap.set('n', '<leader>ff', ":Telescope find_files<cr>", {noremap = true, silent = true})
-vim.keymap.set('n', '<leader>fg', ":Telescope live_grep<cr>", {noremap = true, silent = true})
-vim.keymap.set('n', '<leader>fb', ":Telescope buffers<cr>", {noremap = true, silent = true})
