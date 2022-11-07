@@ -22,6 +22,9 @@ return {
         cmd = 'TSPlaygroundToggle',
         config = function() require("nvim-treesitter.configs").setup{} end,
     },
+    ['p00f/nvim-ts-rainbow'] = {
+        after = "nvim-treesitter"
+    },
 
     -- Lsp plugins
     ["williamboman/mason.nvim"] = {
@@ -70,11 +73,24 @@ return {
     },
 
     -- Git plugins
-      -- git stuff
     ["lewis6991/gitsigns.nvim"] = {
         ft = "gitcommit",
         setup = function() require("core.lazy_load").gitsigns() end,
         config = function() require("plugins.gitsigns") end,
+    },
+
+    -- Telescope
+    ["nvim-telescope/telescope.nvim"] = {
+        -- cmd = "Telescope",
+        requires = {
+            {'nvim-lua/plenary.nvim', opts=true},
+            {'nvim-lua/popup.nvim', opts=true},
+        },
+        ensure_dependencies=true,
+        config = function() require("plugins.telescope") end,
+    },
+    ['nvim-telescope/telescope-media-files.nvim'] = {
+        -- cmd = "Telescope"
     },
 
     -- Statusline
