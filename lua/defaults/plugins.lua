@@ -5,7 +5,7 @@ return {
 
     -- Colourschemes
     ["rebelot/kanagawa.nvim"] = {
-        config = function() require("plugins.kanagawa") end,
+        config = function() require("plugins.config.kanagawa") end,
     },
 
     -- Treesitter plugins
@@ -14,7 +14,7 @@ return {
         setup = function() require("core.lazy_load").on_file_open("nvim-treesitter") end,
         cmd = require("core.lazy_load").treesitter_cmds,
         run = ":TSUpdate",
-        config = function() require("plugins.nvim-treesitter") end,
+        config = function() require("plugins.config.nvim-treesitter") end,
     },
     ['nvim-treesitter/playground'] = {
         requires = 'nvim-treesitter/nvim-treesitter',
@@ -28,7 +28,7 @@ return {
 
     -- Lsp plugins
     ["williamboman/mason.nvim"] = {
-        config = function() require("plugins.mason") end,
+        config = function() require("plugins.config.mason") end,
     },
     ["neovim/nvim-lspconfig"] = {
         opt = true,
@@ -36,7 +36,7 @@ return {
         config = function() require("lsp") end,
     },
     ["williamboman/mason-lspconfig.nvim"] = {
-        config = function() require("plugins.mason-lspconfig") end,
+        config = function() require("plugins.config.mason-lspconfig") end,
     },
 
     -- Autocompletion and snippets
@@ -46,12 +46,12 @@ return {
     },
     ["hrsh7th/nvim-cmp"] = {
         after = "friendly-snippets",
-        config = function() require("plugins.nvim-cmp") end,
+        config = function() require("plugins.config.nvim-cmp") end,
     },
     ["L3MON4D3/LuaSnip"] = {
         wants = "friendly-snippets",
         after = "nvim-cmp",
-        config = function() require("plugins.luasnip") end,
+        config = function() require("plugins.config.luasnip") end,
     },
     ["saadparwaiz1/cmp_luasnip"] = {
         after = "LuaSnip"
@@ -76,26 +76,34 @@ return {
     ["lewis6991/gitsigns.nvim"] = {
         ft = "gitcommit",
         setup = function() require("core.lazy_load").gitsigns() end,
-        config = function() require("plugins.gitsigns") end,
+        config = function() require("plugins.config.gitsigns") end,
     },
 
     -- Telescope
     ["nvim-telescope/telescope.nvim"] = {
-        -- cmd = "Telescope",
+        cmd = "Telescope",
         requires = {
             {'nvim-lua/plenary.nvim', opts=true},
             {'nvim-lua/popup.nvim', opts=true},
         },
         ensure_dependencies=true,
-        config = function() require("plugins.telescope") end,
+        config = function() require("plugins.config.telescope") end,
+        setup = function() require("plugins.setup.telescope") end,
     },
     ['nvim-telescope/telescope-media-files.nvim'] = {
-        -- cmd = "Telescope"
+        cmd = "Telescope"
+    },
+
+    -- File navigation
+    ["kyazdani42/nvim-tree.lua"] = {
+        cmd = {"NvimTreeToggle", "NvimTreeFocus"},
+        config = function() require("plugins.config.nvimtree") end,
+        setup = function() require("plugins.setup.nvimtree") end,
     },
 
     -- Statusline
     ['feline-nvim/feline.nvim'] = {
-        config = function() require("plugins.feline") end,
+        config = function() require("plugins.config.feline") end,
         requires={
             {'kyazdani42/nvim-web-devicons', opts=true},
             {'lewis6991/gitsigns.nvim', opts=true},
@@ -106,17 +114,20 @@ return {
     -- Utility plugins
     ["windwp/nvim-autopairs"] = {
         after = "nvim-cmp",
-        config = function() require("plugins.nvim-autopairs") end,
+        config = function() require("plugins.config.nvim-autopairs") end,
     },
     ["lukas-reineke/indent-blankline.nvim"] = {
         opt = true,
-        setup = function() require("core.lazy_load").on_file_open("indent-blankline.nvim") end,
-        config = function() require("plugins.indent-blankline") end,
+        setup = function()
+            require("core.lazy_load").on_file_open("indent-blankline.nvim") 
+            require("plugins.setup.indent-blankline")
+        end,
+        config = function() require("plugins.config.indent-blankline") end,
     },
 
     -- Miscellanea
     ["kyazdani42/nvim-web-devicons"] = {
         module = "nvim-web-devicons",
-        config = function() require("plugins.devicons") end,
+        config = function() require("plugins.config.devicons") end,
     },
 }
