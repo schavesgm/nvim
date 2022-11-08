@@ -38,7 +38,7 @@ local function lsp_keymaps(bufnr)
     local callback = vim.fn['exists'](':CodeActionMenu') and ":CodeActionMenu<Cr>" or vim.lsp.buf.code_action
     vim.keymap.set('n', '<leader>ca', callback, opts)
 
-    vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+    vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format{async=true}' ]]
 end
 
 return {
