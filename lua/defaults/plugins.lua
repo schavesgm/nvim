@@ -81,7 +81,7 @@ return {
 
     -- Telescope
     ["nvim-telescope/telescope.nvim"] = {
-        cmd = "Telescope",
+        cmd = {"Telescope"},
         requires = {
             {'nvim-lua/plenary.nvim', opts=true},
             {'nvim-lua/popup.nvim', opts=true},
@@ -91,7 +91,7 @@ return {
         setup = function() require("plugins.setup.telescope") end,
     },
     ['nvim-telescope/telescope-media-files.nvim'] = {
-        cmd = "Telescope"
+        cmd = {"Telescope"}
     },
 
     -- File navigation
