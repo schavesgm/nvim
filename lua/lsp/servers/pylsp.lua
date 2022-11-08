@@ -1,0 +1,2 @@
+-- Configuration of pylsp
+return {}
