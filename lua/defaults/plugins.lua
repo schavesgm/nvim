@@ -81,6 +81,11 @@ return {
         setup = function() require("core.lazy_load").gitsigns() end,
         config = function() require("plugins.config.gitsigns") end,
     },
+    ["TimUntersberger/neogit"] = {
+        cmd = "Neogit",
+        requires = "nvim-lua/plenary.nvim",
+        config = function() require("plugins.config.neogit") end,
+    },
 
     -- Telescope
     ["nvim-telescope/telescope.nvim"] = {
