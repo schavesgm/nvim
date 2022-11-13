@@ -38,6 +38,9 @@ return {
     ["williamboman/mason-lspconfig.nvim"] = {
         config = function() require("plugins.config.mason-lspconfig") end,
     },
+    ["ray-x/lsp_signature.nvim"] = {
+        after = "nvim-lspconfig",
+    },
 
     -- Autocompletion and snippets
     ["rafamadriz/friendly-snippets"] = {
