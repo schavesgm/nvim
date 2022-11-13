@@ -7,12 +7,13 @@ local M = {}
 ---@param WARN any Warn item in the table
 ---@param HINT any Hint item in the table
 ---@param INFO any Info item in the table
-local function generate_severity_table(ERROR, WARN, HINT, INFO)
+local function generate_severity_table(ERROR, WARN, INFO, HINT)
     return {
-        ERROR, E = ERROR, ERROR = ERROR,
-        WARN , W = WARN,  WARN  = WARN,
-        HINT , H = HINT,  HINT  = HINT,
-        INFO , I = INFO,  INFO  = INFO,
+        ERROR, WARN, INFO, HINT,
+        E = ERROR, ERROR = ERROR,
+        W = WARN,  WARN  = WARN,
+        I = INFO,  INFO  = INFO,
+        H = HINT,  HINT  = HINT,
     }
 end
 
@@ -26,7 +27,7 @@ end
 function M.setup()
 
     -- Define the emoji employed for each severity
-    local severity_emojis = generate_severity_table("🦠", "🐍", "🐧", "🦊")
+    local severity_emojis = generate_severity_table("🤯", "🥶", "🦜", "😉")
 
     local signs = {
         {name = "DiagnosticSignError", text = severity_emojis.ERROR},
@@ -44,16 +45,13 @@ function M.setup()
         virtual_text = {
             format = function(diagnostic)
                 local msg = string.format("%s", diagnostic.message)
-                if diagnostic.code then
-                    msg = string.format("%s: %s", diagnostic.code, msg)
-                end
-                return string.format("%s 🡒 %s",severity_emojis[diagnostic.severity], msg)
+                return string.format(" · %s 🡒  %s", severity_emojis[diagnostic.severity], msg)
             end,
             prefix = "",
         },
-        signs = {active = signs},
+        signs = signs,
         update_in_insert = true,
-        underline = true,
+        underline = false,
         severity_sort = true,
         float = {
             focusable = false,
@@ -64,9 +62,9 @@ function M.setup()
             prefix    = "",
             format    = function(diagnostic)
                 local severity = diagnostic.severity
-                return string.format("%s %s 🡒  %s",
-                    ({"Error", "Warn", "Hint", "Info"})[severity],
+                return string.format(" · %s %s: %s",
                     severity_emojis[severity],
+                    ({"ERROR", "WARN", "INFO", "HINT"})[severity],
                     diagnostic.message
                 )
             end,
@@ -86,22 +84,24 @@ function M.setup()
     })
 
     vim.lsp.handlers["textDocument/completion/completionItem"] = {
-        documentationFormat = { "markdown", "plaintext" },
+        documentationFormat = {"markdown", "plaintext"},
         snippetSupport = true,
         preselectSupport = true,
         insertReplaceSupport = true,
         labelDetailsSupport = true,
         deprecatedSupport = true,
         commitCharactersSupport = true,
-        tagSupport = { valueSet = { 1 } },
-        resolveSupport = {
-        properties = {
-            "documentation",
-            "detail",
-            "additionalTextEdits",
+        tagSupport = {
+            valueSet = {1}
         },
-    },
-}
+        resolveSupport = {
+            properties = {
+                "documentation",
+                "detail",
+                "additionalTextEdits",
+            },
+        },
+    }
 end
 
 return M
