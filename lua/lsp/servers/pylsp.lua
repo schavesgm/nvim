@@ -11,11 +11,14 @@ return {
                     enabled = true,
                     max_line_length = 100,
                     max_cognitive_complexity = 15,
-                    ignore = {"E203", "E266", "E501", "W503"},
+                    ignore = {"E203", "E266", "E501", "E303", "W503", "E302"},
                 },
                 pylint = {
                     enabled = true,
                     args = {"--py36-plus", "--py37-plus", "--py38-plus"},
+                },
+                pycodestyle = {
+                    enabled = false,
                 }
             }
         }
