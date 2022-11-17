@@ -127,7 +127,7 @@ return {
     ["lukas-reineke/indent-blankline.nvim"] = {
         opt = true,
         setup = function()
-            require("core.lazy_load").on_file_open("indent-blankline.nvim") 
+            require("core.lazy_load").on_file_open("indent-blankline.nvim")
             require("plugins.setup.indent-blankline")
         end,
         config = function() require("plugins.config.indent-blankline") end,
@@ -138,4 +138,7 @@ return {
         module = "nvim-web-devicons",
         config = function() require("plugins.config.devicons") end,
     },
+    ['mechatroner/rainbow_csv'] = {
+        ft = "csv",
+    }
 }
