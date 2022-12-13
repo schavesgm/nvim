@@ -137,5 +137,6 @@ plugin.setup({
         {name = "nvim_lua"},
         {name = "path"},
         {name = "latex_symbols"},
+        {name = "git"},
     },
 })

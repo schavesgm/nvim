@@ -74,6 +74,11 @@ return {
     ["kdheepak/cmp-latex-symbols"] = {
         after = "cmp-path"
     },
+    ["petertriho/cmp-git"] = {
+        config = function() require("plugins.config.nvim_git") end,
+        after = "cmp-latex-symbols",
+        requires = "nvim-lua/plenary.nvim",
+    },
 
     -- Git plugins
     ["lewis6991/gitsigns.nvim"] = {
