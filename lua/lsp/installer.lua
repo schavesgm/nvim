@@ -13,8 +13,8 @@ local function on_attach(client, bufnr)
     require("lsp.utils").lsp_highlight_document(client)
     require("lsp.utils").lsp_keymaps(bufnr)
 
-    local present, lsp_signature = pcall(require, "lsp_signature")
-    if present then
+    local lspsig_present, lsp_signature = pcall(require, "lsp_signature")
+    if lspsig_present then
         lsp_signature.on_attach({
             bind = true, -- This is mandatory, otherwise border config won't get registered.
             handler_opts = {"rounded"},
