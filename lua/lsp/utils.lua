@@ -36,7 +36,7 @@ local function lsp_keymaps(bufnr)
 
     -- Code action mapping
     local code_action_callback
-    if vim.fn.exists(":CodeActionMenu") == 1 then
+    if vim.fn.exists(":CodeActionMenu") > 0 then
         code_action_callback = ":CodeActionMenu<Cr>"
     else
         code_action_callback = vim.lsp.buf.code_action
