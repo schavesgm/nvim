@@ -35,10 +35,15 @@ local function lsp_keymaps(bufnr)
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename,        opts)
 
     -- Code action mapping
-    local callback = vim.fn['exists'](':CodeActionMenu') and ":CodeActionMenu<Cr>" or vim.lsp.buf.code_action
-    vim.keymap.set('n', '<leader>ca', callback, opts)
+    local code_action_callback
+    if vim.fn.exists(":CodeActionMenu") == 1 then
+        code_action_callback = ":CodeActionMenu<Cr>"
+    else
+        code_action_callback = vim.lsp.buf.code_action
+    end
+    vim.keymap.set('n', '<leader>ca', code_action_callback, opts)
 
-    vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format{async=true}' ]]
+    vim.cmd [[ command! Format execute "lua vim.lsp.buf.format{async=true}" ]]
 end
 
 return {
