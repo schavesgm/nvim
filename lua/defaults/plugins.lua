@@ -127,6 +127,12 @@ return {
         ensure_dependencies=true,
     },
 
+    -- Markup language plugins
+    ["schavesgm/partex.nvim"] = {
+        config = function() require("plugins.config.partex") end,
+        ft = {"tex",}
+    },
+
     -- Utility plugins
     ["windwp/nvim-autopairs"] = {
         after = "nvim-cmp",
