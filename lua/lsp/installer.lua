@@ -29,7 +29,7 @@ local server_configs = require("lsp.servers")
 for _, server in ipairs(mason_lspconfig.get_installed_servers()) do
 
     -- Basic server configuration
-    local config = {on_attach    = on_attach,}
+    local config = {on_attach = on_attach,}
 
     -- If a configuration is present, then add it
     if server_configs[server] ~= nil then

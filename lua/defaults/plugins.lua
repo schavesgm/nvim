@@ -41,6 +41,9 @@ return {
     ["ray-x/lsp_signature.nvim"] = {
         after = "nvim-lspconfig",
     },
+    ["weilbith/nvim-code-action-menu"] = {
+        cmd = 'CodeActionMenu',
+    },
 
     -- Autocompletion and snippets
     ["rafamadriz/friendly-snippets"] = {
