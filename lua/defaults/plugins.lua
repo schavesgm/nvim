@@ -148,5 +148,11 @@ return {
     },
     ['mechatroner/rainbow_csv'] = {
         ft = "csv",
-    }
+    },
+
+    -- TUI plugins
+    ["j-hui/fidget.nvim"] = {
+        config = function() require("plugins.config.fidget") end,
+        after = "nvim-lspconfig",
+    },
 }
