@@ -1,31 +1,8 @@
 local present, telescope = pcall(require, "telescope")
 if not present then return end
 
--- Function to load telescope extensions
-local function telescope_extension(extension)
-    local extension_loaded, _ = pcall(telescope.load_extension, extension)
-    if not extension_loaded then
-        vim.notify('telescope extension ' .. extension .. ' cannot be loaded', vim.log.levels.WARN)
-        return false
-    end
-    return true
-end
-
 -- Grab some modules
 local actions = require("telescope.actions")
-
--- Load some telescope extensions using protected call
-if telescope_extension("media_files") then
-    local is_fdfind_installed = (vim.fn.executable('fdfind') == 1)
-    if not is_fdfind_installed then
-        vim.notify('fdfind [fd] cannot be found in system; run "sudo apt-get install fd-find":', vim.log.levels.WARN)
-    else
-        local is_fd_installed = (vim.fn.executable('fd') == 1)
-        if not is_fd_installed then
-            os.execute('ln -s $(which fdfind) ~/.local/bin/fd')
-        end
-    end
-end
 
 -- Check that ripgrep is installed in the system
 local is_rg_installed = (vim.fn.executable('rg') == 1)
@@ -138,10 +115,6 @@ telescope.setup {
         -- builtin picker
     },
     extensions = {
-        media_files = {
-            filetypes = {"png", "webp", "jpg", "jpeg", "pdf"},
-            find_cmd = "fdfind",
-        },
         file_browser = {
             theme = "ivy",
         },
