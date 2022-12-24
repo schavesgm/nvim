@@ -22,6 +22,12 @@ plugin.setup {
         side = "left",
         width = 25,
         hide_root_folder = true,
+        mappings = {
+            list = {
+                -- Allow Ctrl+[ to move up directories
+                {key = "<C-[>", action = "dir_up"},
+            },
+        },
     },
     git = {
         enable = true,
@@ -64,13 +70,13 @@ plugin.setup {
                     arrow_closed = "",
                 },
                 git = {
-                    unstaged = "✗",
-                    staged = "✓",
+                    unstaged = "",
+                    staged = "",
                     unmerged = "",
-                    renamed = "➜",
-                    untracked = "★",
+                    renamed = "",
+                    untracked = "",
                     deleted = "",
-                    ignored = "◌",
+                    ignored = "",
                 },
             },
         }
