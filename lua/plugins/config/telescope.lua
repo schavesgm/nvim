@@ -3,8 +3,8 @@ if not present then return end
 
 -- Function to load telescope extensions
 local function telescope_extension(extension)
-    local present, _ = pcall(telescope.load_extension, extension)
-    if not present then
+    local extension_loaded, _ = pcall(telescope.load_extension, extension)
+    if not extension_loaded then
         vim.notify('telescope extension ' .. extension .. ' cannot be loaded', vim.log.levels.WARN)
         return false
     end
