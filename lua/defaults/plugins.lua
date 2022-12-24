@@ -127,6 +127,11 @@ return {
         ensure_dependencies=true,
     },
 
+    -- Quickfix list
+    ["kevinhwang91/nvim-bqf"] = {
+        ft = 'qf',
+    },
+
     -- Markup language plugins
     ["schavesgm/partex.nvim"] = {
         config = function() require("plugins.config.partex") end,
@@ -157,6 +162,9 @@ return {
     },
     ["famiu/bufdelete.nvim"] = {
         command = {"Bdelete", "Bwipeout"},
+    },
+    ["junegunn/fzf"] = {
+        run = function() vim.fn['fzf#install']() end,
     },
 
     -- TUI plugins
