@@ -29,14 +29,17 @@ return {
         ["<Left>"]  = "",
         ["<Right>"] = "",
 
-        -- Lexplore navigation
-        -- ["<leader>e"] = ":Lex 30<Cr>",
-
         -- Buffer movement
         ["[b"] = ":bprevious<CR>",
         ["]b"] = ":bnext<CR>",
         ["[B"] = ":bfirst<CR>",
         ["]B"] = ":blast<CR>",
+
+        -- Quickfix navigation
+        ["<leader>co"] = ":copen<Cr>",
+        ["<leader>cx"] = ":cclose<Cr>",
+        ["]c"] = ":cnext<Cr>",
+        ["[c"] = ":cprev<Cr>",
 
         -- Resize with arrows
         ["<C-Up>"]    = ":resize -2<Cr>",
