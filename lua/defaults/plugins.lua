@@ -155,6 +155,9 @@ return {
     ['mechatroner/rainbow_csv'] = {
         ft = "csv",
     },
+    ["famiu/bufdelete.nvim"] = {
+        command = {"Bdelete", "Bwipeout"},
+    },
 
     -- TUI plugins
     ["j-hui/fidget.nvim"] = {
