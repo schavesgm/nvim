@@ -37,6 +37,12 @@ return {
         ["[B"] = ":bfirst<CR>",
         ["]B"] = ":blast<CR>",
 
+        -- Quickfix navigation
+        ["<leader>qo"] = ":copen<CR>",
+        ["<leader>qx"] = ":cclose<CR>",
+        ["]c"] = ":cnext<CR>",
+        ["[c"] = ":cprevious<CR>",
+
         -- Resize with arrows
         ["<C-Up>"]    = ":resize -2<Cr>",
         ["<C-Down>"]  = ":resize +2<CR>",
