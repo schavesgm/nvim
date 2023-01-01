@@ -52,7 +52,7 @@ return {
     wildmode = 'full',                         -- Show the command line possibilites according to those sorting keys
 
     -- Spelling options
-    spelllang = 'en,es',                       -- Allow these dictionaries to be loaded
+    spelllang = 'en',                          -- Allow these dictionaries to be loaded
 
     -- Indent options
     smartindent = true,                        -- Make indenting smarter again
