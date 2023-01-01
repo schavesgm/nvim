@@ -10,7 +10,9 @@ return {
         "nvim-treesitter/playground",
         dependencies = "nvim-treesitter/nvim-treesitter",
         cmd = "TSPlaygroundToggle",
-        config = function() require("nvim-treesitter.configs").setup{} end,
+        config = function()
+            require("nvim-treesitter.configs").setup{}
+        end,
     },
     {
         "p00f/nvim-ts-rainbow",
@@ -57,6 +59,18 @@ return {
         dependencies = "LuaSnip"
     },
 
+    -- Git plugins
+    {
+        "TimUntersberger/neogit",
+        cmd = "Neogit",
+        dependencies = "nvim-lua/plenary.nvim",
+        config = function()
+            local is_present, plugin = pcall(require, "neogit")
+            if not is_present then return end
+            plugin.setup{}
+        end
+    },
+
     -- Quickfix
     {
         "kevinhwang91/nvim-bqf",
@@ -74,7 +88,9 @@ return {
     },
     {
         "junegunn/fzf",
-        build = function() vim.fn['fzf#install']() end,
+        build = function()
+            vim.fn['fzf#install']()
+        end,
     },
     {
         "j-hui/fidget.nvim",
