@@ -13,12 +13,19 @@ local function on_attach(client, bufnr)
     require("lsp.utils").lsp_highlight_document(client)
     require("lsp.utils").lsp_keymaps(bufnr)
 
-    local lspsig_present, lsp_signature = pcall(require, "lsp_signature")
-    if lspsig_present then
+    -- Attach lsp_signature
+    local is_signature_present, lsp_signature = pcall(require, "lsp_signature")
+    if is_signature_present then
         lsp_signature.on_attach({
             bind = true, -- This is mandatory, otherwise border config won't get registered.
             handler_opts = {"rounded"},
         }, bufnr)
+    end
+
+    -- Attach nvim_navic
+    local is_navic_present, navic = pcall(require, "nvim-navic")
+    if is_navic_present then
+        navic.attach(client, bufnr)
     end
 end
 
