@@ -73,7 +73,10 @@ function M.config()
                 right_sep = {str = ' '},
             },
             {
-                provider = 'git_branch',
+                provider = function()
+                    local branch = require("feline.providers.git").git_branch()
+                    return string.sub(branch, 1, math.min(string.len(branch), 30))
+                end,
                 hl = {fg = theme.orange, style = 'bold'},
                 right_sep = {str='  ', hl={fg=theme.bg, bg=theme.oceanblue}},
             },
