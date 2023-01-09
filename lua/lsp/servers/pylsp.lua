@@ -1,5 +1,4 @@
 -- Configuration of pylsp
-print("I am here")
 return {
     settings = {
         pylsp = {
@@ -19,10 +18,14 @@ return {
                     args = {"--py36-plus", "--py37-plus", "--py38-plus"},
                 },
                 pycodestyle = {
-                    enabled = true,
+                    enabled = false,
                 },
                 pylsp_mypy = {
                     enabled = true,
+                },
+                pylsp_black = {
+                    enabled = true,
+                    line_length = 100,
                 }
                 -- For some reason, this eliminates all other diagnostics
                 -- pydocstyle = {
