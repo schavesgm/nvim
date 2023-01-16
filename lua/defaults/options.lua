@@ -52,6 +52,7 @@ return {
     wildmode = 'full',                         -- Show the command line possibilites according to those sorting keys
 
     -- Spelling options
+    spell = true,                              -- Allow spell-checking
     spelllang = 'en',                          -- Allow these dictionaries to be loaded
 
     -- Indent options
