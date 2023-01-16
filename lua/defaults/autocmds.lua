@@ -45,8 +45,8 @@ return {
     MarkupAutocmds = {
         {
             event = { "BufEnter", "WinEnter" },
-            opts = { pattern = { "*.tex", "*.txt", "*.md" },
-                command = [[setlocal textwidth=100 colorcolumn=+1]] }
+            opts = { pattern = { "*.tex", "*.txt", "*.md" } },
+            command = [[setlocal textwidth=100 colorcolumn=+1]] }
         },
         {
             event = "BufEnter",
