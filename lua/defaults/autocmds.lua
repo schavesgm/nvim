@@ -46,7 +46,7 @@ return {
         {
             event = { "BufEnter", "WinEnter" },
             opts = { pattern = { "*.tex", "*.txt", "*.md" } },
-            command = [[setlocal textwidth=100 colorcolumn=+1]] }
+            command = [[setlocal textwidth=100 colorcolumn=+1]]
         },
         {
             event = "BufEnter",
