@@ -33,7 +33,7 @@ return {
     RestoreCursor = {
         { event = "BufRead", opts = { pattern = "*", command = [[call setpos(".", getpos("'\""))]] } }
     },
-    TerminalJob = {
+    TerminalCommands = {
         { event = "TermOpen", opts = { pattern = "*", command = [[tnoremap <buffer> <Esc> <c-\><c-n>]] } },
         { event = "TermOpen", opts = { pattern = "*", command = "startinsert" } },
         { event = "TermOpen", opts = { pattern = "*", command = [[setlocal nonumber norelativenumber]] } },
@@ -45,22 +45,28 @@ return {
     MarkupAutocmds = {
         {
             event = { "BufEnter", "WinEnter" },
-            opts = { pattern = { "*.tex", "*.txt", "*.md" } },
-            command = [[setlocal textwidth=100 colorcolumn=+1]]
+            opts = {
+                pattern = { "*.tex", "*.txt", "*.md" },
+                command = [[setlocal textwidth=100 colorcolumn=+1]]
+            }
         },
         {
             event = "BufEnter",
-            opts = { pattern = { "*.tex", "*.md" } },
-            callback = start_timed_callback(
-                function(bufnr) vim.cmd(':w ' .. bufnr) end,
-                minutes_to_milisecodns(3),
-                minutes_to_milisecodns(3)
-            )
+            opts = {
+                pattern = { "*.tex", "*.md" },
+                callback = start_timed_callback(
+                    function(bufnr) vim.cmd(':w ' .. bufnr) end,
+                    minutes_to_milisecodns(3),
+                    minutes_to_milisecodns(3)
+                )
+            },
         },
         {
             event = "BufLeave",
-            opts = { pattern = { "*.tex", "*.md" } },
-            callback = end_timed_callback,
+            opts = {
+                pattern = { "*.tex", "*.md" },
+                callback = end_timed_callback,
+            }
         }
     },
 }
