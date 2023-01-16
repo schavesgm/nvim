@@ -84,7 +84,7 @@ function M.config()
                     ["<C-x>"]      = actions.select_horizontal,
                     ["<C-v>"]      = actions.select_vertical,
                     ["<C-t>"]      = actions.select_tab,
-                    ["<Tab>"]      = actions.toggle_selection,
+                    ["<Tab>"]      = actions.toggle_selection + actions.move_selection_next,
                     ["<C-a>"]      = actions.send_to_qflist + actions.open_qflist,
                     ["<C-s>"]      = actions.send_selected_to_qflist + actions.open_qflist,
                     ["j"]          = actions.move_selection_next,
