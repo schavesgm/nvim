@@ -27,7 +27,11 @@ local function bootstrap_lazy()
 end
 
 ---Initialise the configuration.
-function M:init()
+---@param config_path string; path to configuration to be saved as global
+function M:init(config_path)
+
+    -- Set the configuration path as a global
+    _G.config_path = config_path
 
     -- Bootstrap lazy-nvim plugin manager
     bootstrap_lazy()
