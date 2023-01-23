@@ -22,7 +22,7 @@ return {
     infercase     = true,                      -- Allow Nvim to infer the case in autocomplete
     showtabline   = 2,                         -- Show the tablines - name of the files on top - always
     laststatus    = 3,                         -- Use a global status line by default
-    colorcolumn   = 100,                       -- Set a colorcolumn marker at 100 characters
+    colorcolumn   = "100",                     -- Set a colorcolumn marker at 100 characters
 
     -- Navigation options
     wrap           = false,                    -- Display lines as one long line instead of wrapping them
