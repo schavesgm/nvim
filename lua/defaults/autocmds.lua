@@ -38,6 +38,7 @@ return {
         { event = "TermOpen", opts = { pattern = "*", command = "startinsert" } },
         { event = "TermOpen", opts = { pattern = "*", command = [[setlocal nonumber norelativenumber]] } },
         { event = "TermOpen", opts = { pattern = "*", command = [[setlocal filetype=term]] } },
+        { event = "TermOpen", opts = { pattern = "*", command = [[setlocal spell!]] } },
     },
     SaveToShada = {
         { event = "VimLeave", opts = { pattern = "*", command = "wshada!" } },
