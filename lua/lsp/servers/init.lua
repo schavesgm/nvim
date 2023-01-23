@@ -2,7 +2,7 @@
 local M = {}
 
 -- Add all the servers
-local servers = {"jsonls", "sumneko_lua", "pylsp", "texlab"}
+local servers = {"jsonls", "sumneko_lua", "pylsp", "texlab", "efm"}
 
 for _, name in ipairs(servers) do
     M[name] = require(string.format("lsp.servers.%s", name))

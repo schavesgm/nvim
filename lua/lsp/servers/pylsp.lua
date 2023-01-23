@@ -1,40 +1,77 @@
 -- Configuration of pylsp
 return {
-    on_init = function()
-        vim.notify(
-            "Diagnostics not showing? Run: pip install \"python-language-server[all]\" pylsp-mypy",
-            vim.log.levels.WARN
-        )
-    end,
     settings = {
         pylsp = {
-            configurationSources = { "pycodestyle" },
+            configurationSources = { "flake8" },
             plugins = {
-                pylsp_black = {
+                -- Jedi plugin
+                jedi_completion = {
                     enabled = true,
-                    line_length = 100,
-                    preview = true,
                 },
-                flake8 = {
+                jedi_definition = {
                     enabled = true,
-                    maxLineLength = 100,
-                    ignore = { "E203", "E266", "E501", "E303", "W503", "E302" },
                 },
+                jedi_hover = {
+                    enabled = true,
+                },
+                jedi_references = {
+                    enabled = true,
+                },
+                jedi_signature_help = {
+                    enabled = true,
+                },
+                jedi_symbols = {
+                    enabled = true,
+                },
+                -- Autopep8
+                autopep8 = {
+                    enabled = false,
+                },
+                -- McCabe
+                mccabe = {
+                    enabled = true,
+                    threshold = 15,
+                },
+                -- Preload
+                preload = {
+                    enabled = false,
+                },
+                -- PyCodestyle
                 pycodestyle = {
                     enabled = true,
+                    exclude = {"__init__.py"},
                     maxLineLength = 100,
                 },
-                pylsp_isort = {
+                -- PyDocStyle
+                pydocstyle = {
+                    enabled = true,
+                    convention = "google",
+                },
+                -- PyFlakes
+                pyflakes = {
                     enabled = true,
                 },
+                -- PyLint
+                pylint = {
+                    enabled = false,
+                },
+                -- Flake8
+                flake8 = {
+                    enabled = false,
+                },
+                -- MyPY
                 pylsp_mypy = {
                     enabled = true,
                 },
-                -- For some reason, this eliminates all other diagnostics
-                -- pydocstyle = {
-                --     enabled = false,
-                --     convention = "google",
-                -- },
+                -- Black
+                pylsp_black = {
+                    enabled = true,
+                    line_length = 100,
+                },
+                -- Isort
+                pylsp_isort = {
+                    enabled = true,
+                },
             }
         }
     }
