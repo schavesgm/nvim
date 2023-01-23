@@ -44,8 +44,12 @@ function M.setup()
     local config = {
         virtual_text = {
             format = function(diagnostic)
-                local msg = string.format("%s", diagnostic.message)
-                return string.format(" · %s 🡒  %s", severity_emojis[diagnostic.severity], msg)
+                local message = " · " .. severity_emojis[diagnostic.severity]
+                local data = " 🡒 " .. diagnostic.message
+                if diagnostic.source ~= nil then
+                    data = diagnostic.source .. " " .. data
+                end
+                return message .. data
             end,
             prefix = "",
         },
@@ -61,12 +65,13 @@ function M.setup()
             header    = "",
             prefix    = "",
             format    = function(diagnostic)
-                local severity = diagnostic.severity
-                return string.format(" · %s %s: %s",
-                    severity_emojis[severity],
-                    ({"ERROR", "WARN", "INFO", "HINT"})[severity],
-                    diagnostic.message
-                )
+                local message = " · " .. severity_emojis[diagnostic.severity]
+                message = " " .. ({"ERROR", "WARN", "INFO", "HINT"})[diagnostic.severity] .. ": "
+                local data = diagnostic.message
+                if diagnostic.source ~= nil then
+                    data = diagnostic.source .. " 🡒 " .. data
+                end
+                return message .. data
             end,
         },
     }

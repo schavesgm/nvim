@@ -1,4 +1,4 @@
-local present, plugin = pcall(require, "lspconfig")
+local present, _ = pcall(require, "lspconfig")
 if not present then return end
 
 require("lsp.installer")
