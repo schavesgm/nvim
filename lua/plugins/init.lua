@@ -63,18 +63,6 @@ return {
         dependencies = "LuaSnip"
     },
 
-    -- Git plugins
-    {
-        "TimUntersberger/neogit",
-        cmd = "Neogit",
-        dependencies = "nvim-lua/plenary.nvim",
-        config = function()
-            local is_present, plugin = pcall(require, "neogit")
-            if not is_present then return end
-            plugin.setup{}
-        end
-    },
-
     -- Quickfix
     {
         "kevinhwang91/nvim-bqf",
