@@ -22,6 +22,12 @@ function M.config()
 		stylua = function(_, _)
 			null_ls.register(null_ls.builtins.formatting.stylua)
 		end,
+        prettier = function(_, _)
+            null_ls.register(null_ls.builtins.formatting.prettier)
+        end,
+        yamllint = function(_, _)
+            null_ls.register(null_ls.builtins.diagnostics.yamllint)
+        end,
 	})
 end
 
