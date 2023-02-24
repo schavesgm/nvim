@@ -5,6 +5,7 @@ local arguments = {
     flake8 = {
         "--stdin-display-name ${INPUT}",
         "--max-line-length 100",
+        "--max-cognitive-complexity 15",
         "--extend-ignore E203,E266,W503,B028"
     },
     mypy = {
