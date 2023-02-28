@@ -19,6 +19,10 @@ local arguments = {
         "--score no",
         "--msg-template {path}:{line}:{column}:{C}:{msg} ${INPUT}"
     },
+    isort = {
+        "-m 3",
+        "--quiet -",
+    }
 }
 
 ---Generate the command of a given EFM target
@@ -83,7 +87,7 @@ return {
                     formatCommand = "black --line-length=100 --quiet -", formatStdin = true,
                 },
                 {
-                    formatCommand = "isort --quiet -", formatStdin = true,
+                    formatCommand = generate_command("isort"), formatStdin = true,
                 },
             }
         }
