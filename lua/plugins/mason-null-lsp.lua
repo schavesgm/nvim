@@ -17,7 +17,6 @@ function M.config()
 	end
 
 	mason_null.setup({ automatic_setup = true, sources = {} })
-
 	mason_null.setup_handlers({
 		stylua = function(_, _)
 			null_ls.register(null_ls.builtins.formatting.stylua)
@@ -28,6 +27,9 @@ function M.config()
         yamllint = function(_, _)
             null_ls.register(null_ls.builtins.diagnostics.yamllint)
         end,
+        fixjson = function(_, _)
+            null_ls.register(null_ls.builtins.formatting.fixjson)
+        end
 	})
 end
 
