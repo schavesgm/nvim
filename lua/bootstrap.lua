@@ -45,6 +45,9 @@ function M:init(config_path)
     -- Initialise the autocommands module
     require("core.autocmds"):init(require("defaults.autocmds"))
 
+    -- Initialise the commands module
+    require("core.commands"):init(require("defaults.commands"))
+
     -- Initialise the plugins
     require("lazy").setup("plugins")
 
