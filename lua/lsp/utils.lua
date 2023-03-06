@@ -42,8 +42,6 @@ local function lsp_keymaps(bufnr)
         code_action_callback = vim.lsp.buf.code_action
     end
     vim.keymap.set('n', '<leader>ca', code_action_callback, opts)
-
-    vim.cmd [[ command! Format execute "lua vim.lsp.buf.format{async=true}" ]]
 end
 
 return {
