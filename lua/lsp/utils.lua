@@ -15,24 +15,23 @@ end
 
 -- Set some lsp keymaps
 local function lsp_keymaps(bufnr)
-
     -- Overall basic options for all keymaps
-    local opts = {noremap = true, silent = true, buffer=bufnr}
+    local opts = { noremap = true, silent = true, buffer = bufnr }
 
     -- Set the buffer definitions
-    vim.keymap.set('n', 'gd',    vim.lsp.buf.definition,     opts)
-    vim.keymap.set('n', 'gD',    vim.lsp.buf.declaration,    opts)
-    vim.keymap.set('n', 'gi',    vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', 'gr',    vim.lsp.buf.references,     opts)
-    vim.keymap.set('n', 'gl',    vim.diagnostic.open_float,  opts)
-    vim.keymap.set('n', 'H',     vim.lsp.buf.hover,          opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts)
+    vim.keymap.set('n', 'H', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', '<C-h>', vim.lsp.buf.signature_help, opts)
 
-    vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next({border="rounded"}) end, opts)
-    vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev({border="rounded"}) end, opts)
+    vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next({ border = "rounded" }) end, opts)
+    vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev({ border = "rounded" }) end, opts)
 
-    vim.keymap.set('n', '<leader>q',  vim.diagnostic.setloclist, opts)
-    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename,        opts)
+    vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
 
     -- Code action mapping
     local code_action_callback
