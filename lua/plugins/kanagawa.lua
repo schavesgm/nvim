@@ -4,16 +4,17 @@ local M = {
 
 -- Configure the plugin
 function M.config()
-    local kanagawa = require("kanagawa")
-    local colors = require("kanagawa.colors").setup()
+    local is_present, plugin = pcall(require, "kanagawa")
+    if not is_present then return end
 
     -- Setup kanagawa module
-    kanagawa.setup{}
+    plugin.setup {}
 
     -- Set kanagawa as the colourscheme of the system
     vim.cmd [[colorscheme kanagawa]]
 
     -- Set some custom highlights on this colourscheme
+    local colors = require("kanagawa.colors").setup()
     vim.api.nvim_set_hl(0, 'WinSeparator',               {bg=nil, fg=colors.crystalBlue, bold=true})
     vim.api.nvim_set_hl(0, 'IndentBlanklineChar',        {bg=nil, fg=colors.sumiInk2, bold=true})
     vim.api.nvim_set_hl(0, 'IndentBlanklineContextChar', {bg=nil, fg=colors.oniViolet, bold=true})
