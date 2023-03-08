@@ -31,6 +31,11 @@ function M.config()
             null_ls.register(null_ls.builtins.formatting.fixjson)
         end
 	})
+    null_ls.setup {
+        on_attach = function()
+            require("lsp.utils").lsp_keymaps(vim.api.nvim_get_current_buf())
+        end
+    }
 end
 
 return M
