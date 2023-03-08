@@ -14,19 +14,19 @@ function M.config()
     -- Set feline theme from kanagawa
     local colors = kanagawa.setup()
     local theme = {
-        fg = colors.oldWhite,
-        bg = colors.sumiInk0,
-        black = colors.sumiInk0,
-        white = colors.oldWhite,
-        green = colors.springGreen,
-        red = colors.peachRed,
-        orange = colors.surimiOrange,
-        skyblue = colors.springBlue,
-        cyan = colors.crystalBlue,
-        oceanblue = colors.waveBlue1,
-        magenta = colors.oniViolet,
-        violet = colors.oniViolet,
-        yellow = colors.carpYellow
+        fg = colors.palette.oldWhite,
+        bg = colors.palette.sumiInk0,
+        black = colors.palette.sumiInk0,
+        white = colors.palette.oldWhite,
+        green = colors.palette.springGreen,
+        red = colors.palette.peachRed,
+        orange = colors.palette.surimiOrange,
+        skyblue = colors.palette.springBlue,
+        cyan = colors.palette.crystalBlue,
+        oceanblue = colors.palette.waveBlue1,
+        magenta = colors.palette.oniViolet,
+        violet = colors.palette.oniViolet,
+        yellow = colors.palette.carpYellow
     }
 
     -- Define the feline components
