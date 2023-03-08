@@ -9,35 +9,41 @@ local M = {}
 ---@param INFO any Info item in the table
 local function generate_severity_table(ERROR, WARN, INFO, HINT)
     return {
-        ERROR, WARN, INFO, HINT,
-        E = ERROR, ERROR = ERROR,
-        W = WARN,  WARN  = WARN,
-        I = INFO,  INFO  = INFO,
-        H = HINT,  HINT  = HINT,
+        ERROR,
+        WARN,
+        INFO,
+        HINT,
+        E = ERROR,
+        ERROR = ERROR,
+        W = WARN,
+        WARN = WARN,
+        I = INFO,
+        INFO = INFO,
+        H = HINT,
+        HINT = HINT,
     }
 end
 
 ---Transform a severity integer into a string
 local function from_sevint_to_string(sevint)
-    local mapping = {"Error", "Warn", "Hint", "Info"}
+    local mapping = { "Error", "Warn", "Hint", "Info" }
     return mapping[sevint]
 end
 
 -- Setup function
 function M.setup()
-
     -- Define the emoji employed for each severity
     local severity_emojis = generate_severity_table("🤯", "🥶", "🦜", "😉")
 
     local signs = {
-        {name = "DiagnosticSignError", text = severity_emojis.ERROR},
-        {name = "DiagnosticSignWarn",  text = severity_emojis.WARN},
-        {name = "DiagnosticSignHint",  text = severity_emojis.HINT},
-        {name = "DiagnosticSignInfo",  text = severity_emojis.INFO},
+        { name = "DiagnosticSignError", text = severity_emojis.ERROR },
+        { name = "DiagnosticSignWarn",  text = severity_emojis.WARN },
+        { name = "DiagnosticSignHint",  text = severity_emojis.HINT },
+        { name = "DiagnosticSignInfo",  text = severity_emojis.INFO },
     }
 
     for _, sign in ipairs(signs) do
-        vim.fn.sign_define(sign.name, {texthl=sign.name, text=sign.text, numhl=""})
+        vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
     end
 
     -- Default configuration for all handlers
@@ -66,7 +72,7 @@ function M.setup()
             prefix    = "",
             format    = function(diagnostic)
                 local message = " · " .. severity_emojis[diagnostic.severity]
-                message = " " .. ({"ERROR", "WARN", "INFO", "HINT"})[diagnostic.severity] .. ": "
+                message = " " .. ({ "ERROR", "WARN", "INFO", "HINT" })[diagnostic.severity] .. ": "
                 local data = diagnostic.message
                 if diagnostic.source ~= nil then
                     data = diagnostic.source .. " 🡒 " .. data
@@ -89,7 +95,7 @@ function M.setup()
     })
 
     vim.lsp.handlers["textDocument/completion/completionItem"] = {
-        documentationFormat = {"markdown", "plaintext"},
+        documentationFormat = { "markdown", "plaintext" },
         snippetSupport = true,
         preselectSupport = true,
         insertReplaceSupport = true,
@@ -97,7 +103,7 @@ function M.setup()
         deprecatedSupport = true,
         commitCharactersSupport = true,
         tagSupport = {
-            valueSet = {1}
+            valueSet = { 1 }
         },
         resolveSupport = {
             properties = {
