@@ -12,8 +12,8 @@ function M.config()
         updateevents = "TextChanged,TextChangedI",
     })
 
-    require("luasnip.loaders.from_vscode").lazy_load({paths = vim.g.luasnippets_path or ""})
     require("luasnip.loaders.from_vscode").lazy_load()
+    require("luasnip.loaders.from_lua").lazy_load({paths = "./snippets"})
 
     vim.api.nvim_create_autocmd("InsertLeave", {
         callback = function()
