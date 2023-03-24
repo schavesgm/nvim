@@ -21,6 +21,7 @@ local M = {
                     default_workspace = "tasks",
 					workspaces = {
 						tasks = "~/Documents/neorg/tasks",
+						notes = "~/Documents/neorg/notes",
 					},
                     index = "index.norg",
                     use_popup = true,
