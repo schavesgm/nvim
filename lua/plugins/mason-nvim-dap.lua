@@ -62,7 +62,7 @@ function M.config()
 		automatic_setup = true,
 	})
 
-	mason_dap.setup_handlers({
+	mason_dap.setup({
 		python = function(_)
 			dap.adapters.python = {
 				type = "executable",

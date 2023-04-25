@@ -10,27 +10,29 @@ local M = {
                     defaults_keybinds = true,
                 }
             },
-			["core.norg.concealer"] = {},
-			["core.norg.completion"] = {
+			["core.concealer"] = {},
+			["core.completion"] = {
                 config = {
                     engine = "nvim-cmp",
                 }
             },
-			["core.norg.dirman"] = {
+			["core.dirman"] = {
 				config = {
                     default_workspace = "tasks",
 					workspaces = {
 						tasks = "~/Documents/neorg/tasks",
-						notes = "~/Documents/neorg/notes",
 					},
                     index = "index.norg",
                     use_popup = true,
 				},
 			},
-            ["core.norg.esupports.hop"] = {},
+            ["core.esupports.hop"] = {},
+            ["core.journal"] = {},
 		},
 	},
-	dependencies = { { "nvim-lua/plenary.nvim" } },
+	dependencies = { 
+        {"nvim-lua/plenary.nvim"},
+    },
 }
 
 return M
