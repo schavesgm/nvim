@@ -8,6 +8,3 @@ if not vim.tbl_contains(vim.opt.rtp:get(), config_path) then
 end
 
 require("bootstrap"):init(config_path)
-
--- Add a local plugin to the configuration
--- vim.opt.runtimepath:append("~/dev/lua/partex.nvim")
