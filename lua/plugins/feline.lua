@@ -8,8 +8,6 @@ function M.config()
     if not is_feline_present then return end
     local is_kanagawa_present, kanagawa = pcall(require, "kanagawa.colors")
     if not is_kanagawa_present then return end
-    local is_navic_present, navic = pcall(require, "nvim-navic")
-    if not is_navic_present then return end
 
     -- Set feline theme from kanagawa
     local colors = kanagawa.setup()
@@ -91,14 +89,11 @@ function M.config()
                 provider = 'diagnostic_errors',
                 hl = { fg = theme.red, bg = theme.oceanblue }
             }
-        }, -- Center part of the statusline
+        },
+        -- Center part of the statusline
         {
-            {
-                provider = function() return navic.get_location() end,
-                enabled = function() return navic.is_available() end,
-                hl = { fg = theme.orange, bg = theme.oceanblue, style = 'bold' }
-            }
-        }, -- Right part of the statusline
+        },
+        -- Right part of the statusline
         {
             {
                 provider = 'git_diff_added',

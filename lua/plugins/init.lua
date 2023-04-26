@@ -28,10 +28,6 @@ return {
         "weilbith/nvim-code-action-menu",
         cmd = 'CodeActionMenu',
     },
-    {
-        "SmiteshP/nvim-navic",
-        dependencies = "neovim/nvim-lspconfig"
-    },
 
     -- Autocompletion and snippets
     {
