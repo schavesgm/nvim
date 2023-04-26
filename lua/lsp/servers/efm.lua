@@ -37,7 +37,13 @@ local function generate_command(name)
 end
 
 return {
-    init_options = { documentFormatting = true },
+    init_options = {
+        documentFormatting = true,
+        hover = true,
+        documentSymbol = true,
+        codeAction = true,
+        completion = true
+    },
     settings = {
         languages = {
             lua = {
