@@ -83,6 +83,7 @@ return {
     {
         "j-hui/fidget.nvim",
         depedendencies = "nvim-lspconfig",
+        tag = "legacy",
         config = function()
             local is_present, plugin = pcall(require, "fidget")
             if not is_present then return end
