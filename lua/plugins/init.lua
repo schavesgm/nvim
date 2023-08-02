@@ -28,6 +28,9 @@ return {
         "weilbith/nvim-code-action-menu",
         cmd = 'CodeActionMenu',
     },
+    {
+        "jubnzv/virtual-types.nvim",
+    },
 
     -- Autocompletion and snippets
     {
@@ -86,6 +89,14 @@ return {
         tag = "legacy",
         config = function()
             local is_present, plugin = pcall(require, "fidget")
+            if not is_present then return end
+            plugin.setup()
+        end
+    },
+    {
+        "norcalli/nvim-colorizer.lua",
+        config = function()
+            local is_present, plugin = pcall(require, "colorizer")
             if not is_present then return end
             plugin.setup()
         end

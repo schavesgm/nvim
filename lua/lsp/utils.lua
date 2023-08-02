@@ -40,7 +40,17 @@ local function lsp_keymaps(bufnr)
     else
         code_action_callback = vim.lsp.buf.code_action
     end
-    vim.keymap.set('n', '<leader>ca', code_action_callback, opts)
+    vim.keymap.set('n', '<leader>a', code_action_callback, opts)
+
+    vim.api.nvim_create_user_command(
+        "CodeLens",
+        function()
+            vim.lsp.codelens.refresh()
+            vim.lsp.codelens.get()
+        end,
+        {}
+    )
+    vim.api.nvim_create_user_command("CodeLensRun", function() vim.lsp.codelens.run() end, {})
 end
 
 return {

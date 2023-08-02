@@ -11,7 +11,13 @@ local function on_attach(bufnr)
     local api = require('nvim-tree.api')
 
     local function opts(desc)
-        return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+        return {
+            desc = 'nvim-tree: ' .. desc,
+            buffer = bufnr,
+            noremap = true,
+            silent = true,
+            nowait = true
+        }
     end
 
     vim.keymap.set('n', '<C-]>', api.tree.change_root_to_node, opts('CD'))
@@ -89,7 +95,7 @@ function M.config()
         },
         on_attach = on_attach,
         view = {
-            adaptive_size = true,
+            adaptive_size = false,
             side = "left",
             width = 25,
         },
@@ -102,7 +108,7 @@ function M.config()
         },
         actions = {
             open_file = {
-                resize_window = true,
+                resize_window = false,
             },
         },
         renderer = {

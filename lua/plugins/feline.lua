@@ -1,6 +1,6 @@
 local M = {
     "feline-nvim/feline.nvim",
-    dependencies = { "kyazdani42/nvim-web-devicons", "lewis6991/gitsigns.nvim" }
+    dependencies = { "nvim-tree/nvim-web-devicons", "lewis6991/gitsigns.nvim" }
 }
 
 function M.config()
@@ -47,44 +47,44 @@ function M.config()
                 left_sep = { str = '  ', hl = { fg = theme.oceanblue } },
                 right_sep = { str = ' ' }
             }, {
-                provider = {
-                    name = 'file_info',
-                    opts = { file_modified_icon = '' }
-                },
-                hl = { style = 'bold' },
-                right_sep = { str = ' ' }
-            }, {
-                provider = function()
-                    local is_mod = vim.fn['getbufinfo']('%')[1].changed
-                    return (is_mod == 1) and '  ' or ''
-                end,
-                hl = { fg = theme.magenta, style = 'bold' }
-            }, {
-                provider = 'file_encoding',
-                hl = { fg = theme.skyblue },
-                right_sep = { str = ' ' }
-            }, {
-                provider = function()
-                    local branch = require("feline.providers.git").git_branch()
-                    return string.sub(branch, 1,
-                        math.min(string.len(branch), 30))
-                end,
-                hl = { fg = theme.orange, style = 'bold' },
-                right_sep = {
-                    str = '  ',
-                    hl = { fg = theme.bg, bg = theme.oceanblue }
-                }
+            provider = {
+                name = 'file_info',
+                opts = { file_modified_icon = '' }
             },
+            hl = { style = 'bold' },
+            right_sep = { str = ' ' }
+        }, {
+            provider = function()
+                local is_mod = vim.fn['getbufinfo']('%')[1].changed
+                return (is_mod == 1) and '  ' or ''
+            end,
+            hl = { fg = theme.magenta, style = 'bold' }
+        }, {
+            provider = 'file_encoding',
+            hl = { fg = theme.skyblue },
+            right_sep = { str = ' ' }
+        }, {
+            provider = function()
+                local branch = require("feline.providers.git").git_branch()
+                return string.sub(branch, 1,
+                    math.min(string.len(branch), 30))
+            end,
+            hl = { fg = theme.orange, style = 'bold' },
+            right_sep = {
+                str = '  ',
+                hl = { fg = theme.bg, bg = theme.oceanblue }
+            }
+        },
             {
                 provider = 'diagnostic_info',
                 hl = { fg = theme.orange, bg = theme.oceanblue }
             }, {
-                provider = 'diagnostic_hints',
-                hl = { fg = theme.magenta, bg = theme.oceanblue }
-            }, {
-                provider = 'diagnostic_warnings',
-                hl = { fg = theme.orange, bg = theme.oceanblue }
-            },
+            provider = 'diagnostic_hints',
+            hl = { fg = theme.magenta, bg = theme.oceanblue }
+        }, {
+            provider = 'diagnostic_warnings',
+            hl = { fg = theme.orange, bg = theme.oceanblue }
+        },
             {
                 provider = 'diagnostic_errors',
                 hl = { fg = theme.red, bg = theme.oceanblue }
@@ -99,28 +99,28 @@ function M.config()
                 provider = 'git_diff_added',
                 hl = { fg = theme.green, bg = theme.oceanblue, style = 'bold' }
             }, {
-                provider = 'git_diff_changed',
-                hl = { fg = theme.skyblue, bg = theme.oceanblue, style = 'bold' }
-            }, {
-                provider = 'git_diff_removed',
-                hl = { fg = theme.red, bg = theme.oceanblue, style = 'bold' }
-            }, {
-                provider = 'line_percentage',
-                hl = { fg = theme.fg, style = 'bold' },
-                right_sep = { str = ' | ', hl = { fg = theme.skyblue } },
-                left_sep = {
-                    str = '  ',
-                    hl = { fg = theme.oceanblue, bg = theme.bg }
-                }
-            }, {
-                provider = 'position',
-                hl = { fg = theme.fg, style = 'bold' },
-                right_sep = { str = ' ' }
-            }, {
-                provider = 'lsp_client_names',
-                hl = { fg = theme.skyblue, bg = theme.bg, style = 'bold' },
-                right_sep = { str = ' ' }
+            provider = 'git_diff_changed',
+            hl = { fg = theme.skyblue, bg = theme.oceanblue, style = 'bold' }
+        }, {
+            provider = 'git_diff_removed',
+            hl = { fg = theme.red, bg = theme.oceanblue, style = 'bold' }
+        }, {
+            provider = 'line_percentage',
+            hl = { fg = theme.fg, style = 'bold' },
+            right_sep = { str = ' | ', hl = { fg = theme.skyblue } },
+            left_sep = {
+                str = '  ',
+                hl = { fg = theme.oceanblue, bg = theme.bg }
             }
+        }, {
+            provider = 'position',
+            hl = { fg = theme.fg, style = 'bold' },
+            right_sep = { str = ' ' }
+        }, {
+            provider = 'lsp_client_names',
+            hl = { fg = theme.skyblue, bg = theme.bg, style = 'bold' },
+            right_sep = { str = ' ' }
+        }
         }
     }
 
@@ -137,16 +137,16 @@ function M.config()
                 right_sep = { str = ' ' },
                 left_sep = { str = '  ', hl = { fg = theme.oceanblue } }
             }, {
-                provider = function()
-                    local is_mod = vim.fn['getbufinfo']('%')[1].changed
-                    return (is_mod == 1) and '  ' or ''
-                end,
-                hl = { fg = theme.magenta, style = 'bold' }
-            }, {
-                provider = 'file_encoding',
-                hl = { fg = theme.skyblue },
-                right_sep = { str = ' ' }
-            },
+            provider = function()
+                local is_mod = vim.fn['getbufinfo']('%')[1].changed
+                return (is_mod == 1) and '  ' or ''
+            end,
+            hl = { fg = theme.magenta, style = 'bold' }
+        }, {
+            provider = 'file_encoding',
+            hl = { fg = theme.skyblue },
+            right_sep = { str = ' ' }
+        },
             { provider = 'git_branch', hl = { fg = theme.orange, style = 'bold' } }
         }, -- Right part of the inactive status bar
         {
@@ -154,12 +154,12 @@ function M.config()
                 provider = 'git_diff_added',
                 hl = { fg = theme.green, bg = theme.bg, style = 'bold' }
             }, {
-                provider = 'git_diff_changed',
-                hl = { fg = theme.skyblue, bg = theme.bg, style = 'bold' }
-            }, {
-                provider = 'git_diff_removed',
-                hl = { fg = theme.red, bg = theme.bg, style = 'bold' }
-            }
+            provider = 'git_diff_changed',
+            hl = { fg = theme.skyblue, bg = theme.bg, style = 'bold' }
+        }, {
+            provider = 'git_diff_removed',
+            hl = { fg = theme.red, bg = theme.bg, style = 'bold' }
+        }
         }
     }
 

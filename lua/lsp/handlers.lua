@@ -94,6 +94,10 @@ function M.setup()
         border = "rounded",
     })
 
+    vim.lsp.handlers["textDocument/codeLens"] = vim.lsp.with(vim.lsp.handlers.codeLens, {
+        border = "rounded",
+    })
+
     vim.lsp.handlers["textDocument/completion/completionItem"] = {
         documentationFormat = { "markdown", "plaintext" },
         snippetSupport = true,

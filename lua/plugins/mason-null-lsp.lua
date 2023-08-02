@@ -14,21 +14,64 @@ function M.config()
 
     mason_null.setup {
         handlers = {
-            stylua = function(_, _)
-                null_ls.register(null_ls.builtins.formatting.stylua)
+            -- Python handlers
+            mypy = function(_, _)
+                null_ls.register(
+                    null_ls.builtins.diagnostics.mypy.with {
+                        extra_args = {
+                            "--show-column-numbers",
+                            "--disallow-untyped-defs",
+                            "--check-untyped-defs",
+                            "--ignore-missing-imports",
+                        }
+                    }
+                )
             end,
-            prettier = function(_, _)
-                null_ls.register(null_ls.builtins.formatting.prettier)
+            flake8 = function(_, _)
+                null_ls.register(
+                    null_ls.builtins.diagnostics.flake8.with {
+                        args = {
+                            "--max-line-length 100",
+                            "--max-cognitive-complexity 15",
+                            "--extend-ignore E203,E266,W503,B028",
+                            "--format",
+                            "default",
+                            "--stdin-display-name",
+                            "$FILENAME",
+                            "-",
+                        }
+                    }
+                )
             end,
-            yamllint = function(_, _)
-                null_ls.register(null_ls.builtins.diagnostics.yamllint)
+            -- pylint = function(_, _)
+            --     null_ls.register(null_ls.builtins.diagnostics.pylint.with{
+            --         extra_args = {"--disable=import-error"},
+            --     })
+            -- end,
+            isort = function(_, _)
+                null_ls.register(null_ls.builtins.formatting.isort)
             end,
-            fixjson = function(_, _)
-                null_ls.register(null_ls.builtins.formatting.fixjson)
-            end,
-            hadolint = function(_, _)
-                null_ls.register(null_ls.builtins.diagnostics.hadolint)
+            black = function(_, _)
+                null_ls.register(null_ls.builtins.formatting.black.with {
+                    extra_args = { "--line-length=100" }
+                })
             end
+
+            -- stylua = function(_, _)
+            --     null_ls.register(null_ls.builtins.formatting.stylua)
+            -- end,
+            -- prettier = function(_, _)
+            --     null_ls.register(null_ls.builtins.formatting.prettier)
+            -- end,
+            -- yamllint = function(_, _)
+            --     null_ls.register(null_ls.builtins.diagnostics.yamllint)
+            -- end,
+            -- fixjson = function(_, _)
+            --     null_ls.register(null_ls.builtins.formatting.fixjson)
+            -- end,
+            -- hadolint = function(_, _)
+            --     null_ls.register(null_ls.builtins.diagnostics.hadolint)
+            -- end
         }
     }
     null_ls.setup {

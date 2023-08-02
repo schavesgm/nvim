@@ -15,7 +15,7 @@ local function generate_new_commit_message(scope)
 end
 
 local entries = {}
-for _, scope in ipairs({"rebase", "fixup"}) do
+for _, scope in ipairs({ "rebase", "fixup" }) do
     entries[#entries + 1] = generate_new_commit_message(scope)
 end
 
