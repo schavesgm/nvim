@@ -1,5 +1,0 @@
-return {
-    checkOnSave = {
-        command = "clippy"
-    }
-}
