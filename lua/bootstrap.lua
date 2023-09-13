@@ -1,13 +1,7 @@
 -- Module used to bootstrap the configuration of gruvim
 local M = {}
 
---- Vim has to be 0.8 at least
---- TODO: this should be a function.
-if vim.fn.has "nvim-0.8" ~= 1 then
-    vim.notify("Please upgrade your Neovim base installation. Requires v0.7+", vim.log.levels.WARN)
-    vim.wait(5000, function() return false end)
-    vim.cmd "cquit"
-end
+local MINIMUM_NVIM_VERSION = "0.8"
 
 -- Bootstrap lazy-nvim plugin manager
 local function bootstrap_lazy()
@@ -29,6 +23,9 @@ end
 ---Initialise the configuration.
 ---@param config_path string; path to configuration to be saved as global
 function M:init(config_path)
+
+    -- Check the minimum version of NeoVim
+    require("utils").assert_miminum_nvim_version(MINIMUM_NVIM_VERSION)
 
     -- Set the configuration path as a global
     _G.config_path = config_path
