@@ -24,12 +24,6 @@ local function generate_severity_table(ERROR, WARN, INFO, HINT)
     }
 end
 
----Transform a severity integer into a string
-local function from_sevint_to_string(sevint)
-    local mapping = { "Error", "Warn", "Hint", "Info" }
-    return mapping[sevint]
-end
-
 -- Setup function
 function M.setup()
     -- Define the emoji employed for each severity
