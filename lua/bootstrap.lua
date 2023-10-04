@@ -52,7 +52,7 @@ end
 
 ---Reload the neovim configuration
 function M:reload()
-    M:init()
+    M:init(_G.config_path)
 end
 
 return M
