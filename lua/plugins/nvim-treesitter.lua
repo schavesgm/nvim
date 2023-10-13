@@ -11,14 +11,14 @@ function M.config()
     if not is_present then return end
 
     treesitter.setup {
-        ensure_installed = {"lua", "vim"},
+        ensure_installed = {"lua", "vim", "markdown", "markdown_inline"},
         sync_install = true,
         auto_install = true,
 
         -- Treesitter highlighting module
         highlight = {
             enable = true,
-            additional_vim_regex_highlighting = false,
+            additional_vim_regex_highlighting = { "markdown" },
             use_languagetree = true,
         },
 
