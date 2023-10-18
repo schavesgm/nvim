@@ -70,11 +70,11 @@ return {
         end,
 
         -- Toggle the diagnostics from LSP
-        ['<leader>d'] = function()
+        ['<leader>da'] = function()
             if not diagnostics_active then
-                vim.diagnostic.enable()
+                vim.diagnostic.enable(0)
             else
-                vim.diagnostic.disable()
+                vim.diagnostic.show(nil, 0)
             end
             diagnostics_active = not diagnostics_active
         end,
