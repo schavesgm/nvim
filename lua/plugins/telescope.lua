@@ -1,16 +1,21 @@
 local M = {
     "nvim-telescope/telescope.nvim",
-    dependencies = {"nvim-lua/plenary.nvim", "nvim-lua/popup.nvim"},
-    cmd = {"Telescope"},
+    dependencies = { "nvim-lua/plenary.nvim", "nvim-lua/popup.nvim" },
+    cmd = { "Telescope" },
 }
 
 function M.init()
     if not vim.fn.executable("rgrep") then
-        vim.notify("ripgrep is not installed, please run:", vim.log.levels.WARN)
-        vim.notify("sudo apt install ripgrep", vim.log.levels.WARN)
+        vim.notify("ripgrep is not installed, please run the commmand:", vim.log.levels.WARN)
+        local os_name = vim.loop.os_uname().sysname
+        if os_name == "Linux" then
+            vim.notify("sudo apt install ripgrep", vim.log.levels.WARN)
+        else
+            vim.notify("brew install ripgrep", vim.log.levels.WARN)
+        end
     end
 
-    local opts = {noremap=true, silent=true}
+    local opts = { noremap = true, silent = true }
     vim.keymap.set('n', '<leader>ff', "<cmd>Telescope find_files<cr>", opts)
     vim.keymap.set('n', '<leader>fg', "<cmd>Telescope live_grep<cr>", opts)
     vim.keymap.set('n', '<leader>fb', "<cmd>Telescope buffers<cr>", opts)
@@ -105,14 +110,14 @@ function M.config()
             }
         },
         file_sorter = require("telescope.sorters").get_fuzzy_file,
-        file_ignore_patterns = {"node_modules"},
+        file_ignore_patterns = { "node_modules" },
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-        path_display = {"truncate"},
+        path_display = { "truncate" },
         winblend = 0,
         border = {},
-        borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
+        borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
         color_devicons = true,
-        set_env = {["COLORTERM"] = "truecolor"}, -- default = nil,
+        set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
         file_previewer = require("telescope.previewers").vim_buffer_cat.new,
         grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
         qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
